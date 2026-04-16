@@ -84,12 +84,6 @@ export default function HUD() {
             <span className="hud-key">[Q]</span>
           </button>
         </div>
-        {username && (
-          <div className="hud-user-row">
-            <span className="hud-username">⚔ {username}</span>
-            <button className="hud-logout-btn" onClick={logout}>Logout</button>
-          </div>
-        )}
       </div>
 
       {/* Attack cooldown bar */}
@@ -109,6 +103,14 @@ export default function HUD() {
       {notification && (
         <div className={`notification ${notification.type}`}>
           {notification.text}
+        </div>
+      )}
+
+      {/* Player identity — bottom left */}
+      {username && (
+        <div className="hud-user-block">
+          <span className="hud-username">⚔ {username}</span>
+          <button className="hud-logout-btn" onClick={logout}>Logout</button>
         </div>
       )}
 
