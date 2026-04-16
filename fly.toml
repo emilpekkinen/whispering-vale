@@ -2,7 +2,7 @@
 # Replace "whispering-vale-backend" with your chosen app name after `fly launch`
 
 app = "whispering-vale-backend"
-primary_region = "ams"
+primary_region = "arn"
 
 [build]
 
