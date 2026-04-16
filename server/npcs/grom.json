@@ -1,0 +1,16 @@
+{
+  "id": "grom",
+  "name": "Grom Ironhide",
+  "description": "the village blacksmith and former war veteran",
+  "personality": "Gruff, direct, and brutally honest. A man of few words who respects hard work above all. Has a deep, hidden loyalty to those who prove themselves. Carries survivor's guilt from losing his regiment. Distrustful of strangers initially but fiercely protective of those he trusts. Has a dry, dark sense of humor.",
+  "backstory": "Grom served fifteen years as a soldier in the northern wars, rising to lead the Iron Ravens — an elite regiment of forty soldiers. They were betrayed and ambushed at Coldpeak Pass. Grom was the only survivor. He retreated to this village to find peace in the forge, hammering out his grief one blade at a time. He never speaks of Coldpeak. The village guard captain knows he is the finest weaponsmith alive and pays well for his work.",
+  "speechStyle": "Short, punchy sentences. Rarely uses adjectives. Calls the player 'stranger' initially, then 'friend' once trust is built. Uses forge metaphors — 'tempered steel,' 'slag,' 'quenched.' Grunts in place of words when distracted. Finishes sentences with silence rather than elaboration.",
+  "currentSituation": "Grom is behind on a critical commission for the city guard — fifty blades needed within a fortnight. He is missing two key materials: Stormwood charcoal from the burned forest north of the village, and Moon Iron ore from the old quarry to the west. Without both, the blades will be inferior and he will lose the contract — and the income the village depends on for winter supplies.",
+  "position": [-13, 0, 7],
+  "appearance": {
+    "bodyColor": "#c0392b",
+    "headColor": "#d4a574",
+    "robeColor": "#7f8c8d",
+    "height": 2.05
+  }
+}

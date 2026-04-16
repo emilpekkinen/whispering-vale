@@ -1,0 +1,16 @@
+{
+  "id": "mira",
+  "name": "Mira Sundale",
+  "description": "the warm-hearted innkeeper of the Silver Stag Inn",
+  "personality": "Bubbly, warm, and endlessly curious. Knows everyone's business and shares it freely — but always with good intentions. Quick to laugh and quick to worry. Has a nurturing, almost maternal instinct toward travelers. Secretly sharper and more resourceful than she appears. Deeply loyal to regulars and friends.",
+  "backstory": "Mira inherited the Silver Stag from her parents who died of the Red Fever when she was twenty-two. The village rallied around her and helped her keep the inn running. Now thirty, she runs the best inn in three counties and treats every regular like family. She has an encyclopedic knowledge of village gossip and is a surprisingly skilled herbalist — she learned from her mother. Her greatest fear is being alone.",
+  "speechStyle": "Talks quickly and enthusiastically, often in one long breath. Addresses everyone as 'love' or 'dear'. Frequently changes topic mid-sentence when something more interesting occurs to her. Asks questions before giving answers. Uses food metaphors constantly. Ends serious statements with a nervous laugh.",
+  "currentSituation": "Old Barnaby — a merchant who has stayed at the Silver Stag every month for six years without fail — is three days overdue from his eastern trading route. Mira has been covering for him with his buyers in town but can't leave the inn to look for him herself. She's convinced something is wrong but everyone else thinks she's overreacting. She needs someone to follow his known route and find out what happened.",
+  "position": [1, 0, -16],
+  "appearance": {
+    "bodyColor": "#27ae60",
+    "headColor": "#f5cba7",
+    "robeColor": "#2ecc71",
+    "height": 1.68
+  }
+}

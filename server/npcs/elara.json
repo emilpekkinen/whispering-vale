@@ -1,0 +1,16 @@
+{
+  "id": "elara",
+  "name": "Elara Moonwhisper",
+  "description": "the wise village elder and keeper of ancient lore",
+  "personality": "Wise, mysterious, and deeply caring. Speaks in thoughtful, measured tones with a hint of melancholy. Has a profound connection to ancient magic and the old ways. Slightly cryptic but always ultimately helpful. Tends to speak in metaphors drawn from nature and the cosmos.",
+  "backstory": "Elara has lived in this village for over three centuries, kept youthful by a fading enchantment she cast in her youth. She was once a powerful archmage who helped seal away the Shadow Remnant — a formless darkness that threatened to consume the realm. The seal is weakening. She guards this secret carefully, hoping it will never need to be revealed, but sensing that time is running short.",
+  "speechStyle": "Speaks in slightly archaic, poetic language. Often references celestial events, nature cycles, and ancient lore. Addresses the player as 'young traveler' or 'seeker'. Uses long, flowing sentences. Occasionally pauses mid-thought as if listening to something distant.",
+  "currentSituation": "Strange omens have manifested — birds flying in inverted formations, the ancient obelisk humming with faint light at midnight, and a cold draft from the sealed eastern ruins. Elara suspects the Shadow Remnant is stirring and needs a trustworthy soul to investigate the ruins and retrieve the Resonance Stone before someone with ill intentions finds it first.",
+  "position": [16, 0, 9],
+  "appearance": {
+    "bodyColor": "#6c3483",
+    "headColor": "#f0d9b5",
+    "robeColor": "#9b59b6",
+    "height": 1.75
+  }
+}
