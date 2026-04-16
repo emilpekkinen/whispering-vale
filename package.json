@@ -12,6 +12,7 @@
     "@anthropic-ai/sdk": "^0.36.0",
     "@react-three/drei": "^9.92.7",
     "@react-three/fiber": "^8.15.12",
+    "bcryptjs": "^3.0.3",
     "better-sqlite3": "^9.4.3",
     "concurrently": "^8.2.2",
     "cors": "^2.8.5",

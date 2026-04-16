@@ -2,6 +2,8 @@ import 'dotenv/config'
 import express from 'express'
 import cors from 'cors'
 import Anthropic from '@anthropic-ai/sdk'
+import bcrypt from 'bcryptjs'
+import { randomUUID } from 'crypto'
 import { getDb } from './db/database.js'
 import { readFileSync, readdirSync } from 'fs'
 import { join, dirname } from 'path'
@@ -457,6 +459,41 @@ app.delete('/api/player/:playerId', (req, res) => {
   db.prepare('DELETE FROM inventory WHERE player_id = ?').run(playerId)
   db.prepare('DELETE FROM players WHERE id = ?').run(playerId)
   res.json({ success: true })
+})
+
+// ─── AUTH ─────────────────────────────────────────────────────────────────────
+
+app.post('/api/auth/register', async (req, res) => {
+  const { username, password } = req.body
+  if (!username || !password) return res.status(400).json({ error: 'Username and password required' })
+  if (username.length < 2 || username.length > 24) return res.status(400).json({ error: 'Username must be 2–24 characters' })
+  if (password.length < 4) return res.status(400).json({ error: 'Password must be at least 4 characters' })
+
+  const db = getDb()
+  const existing = db.prepare('SELECT id FROM users WHERE username = ?').get(username)
+  if (existing) return res.status(409).json({ error: 'Username already taken' })
+
+  const id = randomUUID()
+  const hash = await bcrypt.hash(password, 10)
+  db.prepare('INSERT INTO users (id, username, password_hash) VALUES (?, ?, ?)').run(id, username, hash)
+  db.prepare('INSERT INTO players (id, gold) VALUES (?, 0)').run(id)
+  db.prepare('INSERT INTO inventory (player_id, item) VALUES (?, ?)').run(id, 'Beginner Sword')
+
+  res.json({ playerId: id, username })
+})
+
+app.post('/api/auth/login', async (req, res) => {
+  const { username, password } = req.body
+  if (!username || !password) return res.status(400).json({ error: 'Username and password required' })
+
+  const db = getDb()
+  const user = db.prepare('SELECT * FROM users WHERE username = ?').get(username)
+  if (!user) return res.status(401).json({ error: 'Invalid username or password' })
+
+  const match = await bcrypt.compare(password, user.password_hash)
+  if (!match) return res.status(401).json({ error: 'Invalid username or password' })
+
+  res.json({ playerId: user.id, username: user.username })
 })
 
 const PORT = process.env.PORT || 3001

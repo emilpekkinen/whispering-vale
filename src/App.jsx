@@ -8,9 +8,11 @@ import QuestLog from './ui/QuestLog'
 import MapPanel from './ui/MapPanel'
 import InventoryPanel from './ui/InventoryPanel'
 import StartScreen from './ui/StartScreen'
+import LoginScreen from './ui/LoginScreen'
 
 export default function App() {
-  const gameStarted   = useGameStore(s => s.gameStarted)
+  const gameStarted       = useGameStore(s => s.gameStarted)
+  const isAuthenticated   = useGameStore(s => s.isAuthenticated)
   const setNpcs       = useGameStore(s => s.setNpcs)
   const setPlayerData = useGameStore(s => s.setPlayerData)
   const setLocations  = useGameStore(s => s.setLocations)
@@ -41,6 +43,8 @@ export default function App() {
     const id = setInterval(poll, 8000)
     return () => clearInterval(id)
   }, [setLocations, setNpcs])
+
+  if (!isAuthenticated) return <LoginScreen />
 
   return (
     <>

@@ -1,9 +1,21 @@
 import { create } from 'zustand'
 
+function loadAuth() {
+  try {
+    const raw = localStorage.getItem('wv_auth')
+    if (raw) return JSON.parse(raw)
+  } catch {}
+  return null
+}
+
+const savedAuth = loadAuth()
+
 export const useGameStore = create((set, get) => ({
   // Game state
   gameStarted: false,
-  playerId: 'player1',
+  isAuthenticated: !!savedAuth,
+  playerId: savedAuth?.playerId || 'player1',
+  username: savedAuth?.username || null,
 
   // Player data (synced from server)
   gold: 0,
@@ -46,6 +58,17 @@ export const useGameStore = create((set, get) => ({
 
   // Actions
   setGameStarted: (v) => set({ gameStarted: v }),
+
+  setAuth: ({ playerId, username }) => {
+    localStorage.setItem('wv_auth', JSON.stringify({ playerId, username }))
+    set({ isAuthenticated: true, playerId, username })
+  },
+
+  logout: () => {
+    localStorage.removeItem('wv_auth')
+    set({ isAuthenticated: false, playerId: 'player1', username: null, gameStarted: false,
+      gold: 0, inventory: [], quests: [], dialogueHistory: {}, locations: [], npcs: [] })
+  },
   setNpcs: (npcs) => set({ npcs }),
   setNearbyNPC: (npc) => set({ nearbyNPC: npc }),
   setPlayerPosition: (pos, facing) => set({ playerPosition: pos, playerFacing: facing }),

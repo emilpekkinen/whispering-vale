@@ -2,6 +2,8 @@ import { useEffect } from 'react'
 import { useGameStore } from '../stores/gameStore'
 
 export default function HUD() {
+  const username      = useGameStore(s => s.username)
+  const logout        = useGameStore(s => s.logout)
   const gold          = useGameStore(s => s.gold)
   const inventory     = useGameStore(s => s.inventory)
   const quests        = useGameStore(s => s.quests)
@@ -82,6 +84,12 @@ export default function HUD() {
             <span className="hud-key">[Q]</span>
           </button>
         </div>
+        {username && (
+          <div className="hud-user-row">
+            <span className="hud-username">⚔ {username}</span>
+            <button className="hud-logout-btn" onClick={logout}>Logout</button>
+          </div>
+        )}
       </div>
 
       {/* Attack cooldown bar */}
