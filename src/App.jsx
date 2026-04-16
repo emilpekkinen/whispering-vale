@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { useGameStore } from './stores/gameStore'
+import { API_BASE } from './lib/api'
 import GameScene from './game/GameScene'
 import HUD from './ui/HUD'
 import DialoguePanel from './ui/DialoguePanel'
@@ -18,22 +19,22 @@ export default function App() {
 
   // Initial load
   useEffect(() => {
-    fetch('/api/npcs').then(r => r.json()).then(setNpcs).catch(console.error)
-    fetch(`/api/player/${playerId}`).then(r => r.json()).then(setPlayerData).catch(console.error)
-    fetch('/api/locations').then(r => r.json()).then(setLocations).catch(console.error)
+    fetch(`${API_BASE}/api/npcs`).then(r => r.json()).then(setNpcs).catch(console.error)
+    fetch(`${API_BASE}/api/player/${playerId}`).then(r => r.json()).then(setPlayerData).catch(console.error)
+    fetch(`${API_BASE}/api/locations`).then(r => r.json()).then(setLocations).catch(console.error)
   }, [])
 
   // Poll locations every 8 s; when new ones finish generating, refresh NPCs so area NPCs appear
   useEffect(() => {
     const poll = async () => {
       try {
-        const locs = await fetch('/api/locations').then(r => r.json())
+        const locs = await fetch(`${API_BASE}/api/locations`).then(r => r.json())
         setLocations(locs)
         const readyNow = locs.filter(l => l.status === 'ready').length
         if (readyNow !== prevReadyCount.current) {
           prevReadyCount.current = readyNow
           // Reload NPC list so newly registered area NPCs are pickable
-          fetch('/api/npcs').then(r => r.json()).then(setNpcs).catch(console.error)
+          fetch(`${API_BASE}/api/npcs`).then(r => r.json()).then(setNpcs).catch(console.error)
         }
       } catch { /* ignore network errors during polling */ }
     }

@@ -1,8 +1,9 @@
 import { useState, useRef, useEffect } from 'react'
 import { useGameStore } from '../stores/gameStore'
+import { API_BASE } from '../lib/api'
 
 async function sendMessage(npcId, message, playerId) {
-  const res = await fetch('/api/npc/chat', {
+  const res = await fetch(`${API_BASE}/api/npc/chat`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ npcId, message, playerId })
@@ -12,7 +13,7 @@ async function sendMessage(npcId, message, playerId) {
 }
 
 async function fetchPlayerData(playerId) {
-  const res = await fetch(`/api/player/${playerId}`)
+  const res = await fetch(`${API_BASE}/api/player/${playerId}`)
   if (!res.ok) return null
   return res.json()
 }
