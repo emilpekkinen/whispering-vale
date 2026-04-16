@@ -7,7 +7,8 @@ let db
 
 export function getDb() {
   if (!db) {
-    db = new Database(join(__dirname, '../../game.db'))
+    const dbPath = process.env.DB_PATH || join(__dirname, '../../game.db')
+    db = new Database(dbPath)
     db.pragma('journal_mode = WAL')
     initSchema(db)
   }
